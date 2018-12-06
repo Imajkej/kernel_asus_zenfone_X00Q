@@ -2096,6 +2096,9 @@ next_adapter:
 	while (pAdapterNode && QDF_IS_STATUS_SUCCESS(status)) {
 		pAdapter = pAdapterNode->pAdapter;
 
+		if (pAdapter->sessionId >= MAX_NUMBER_OF_ADAPTERS)
+			continue;
+
 		sme_ps_timer_flush_sync(pHddCtx->hHal, pAdapter->sessionId);
 fetch_adapter:
 		status = hdd_get_next_adapter(pHddCtx, pAdapterNode,
