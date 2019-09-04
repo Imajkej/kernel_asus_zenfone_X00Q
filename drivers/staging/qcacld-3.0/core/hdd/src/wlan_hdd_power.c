@@ -2097,7 +2097,7 @@ next_adapter:
 		pAdapter = pAdapterNode->pAdapter;
 
 		if (pAdapter->sessionId >= MAX_NUMBER_OF_ADAPTERS)
-			continue;
+			goto fetch_adapter;
 
 		sme_ps_timer_flush_sync(pHddCtx->hHal, pAdapter->sessionId);
 fetch_adapter:
